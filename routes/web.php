@@ -22,3 +22,7 @@ Route::get('/', [CustomerController::class, 'index'])->name('index');
 
 Route::get('reg', [CustomerController::class, 'register'])->name('register');
 Route::post('reg', [CustomerController::class, 'registration'])->name('register');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
