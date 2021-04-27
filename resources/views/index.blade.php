@@ -2,6 +2,7 @@
 
 @section('content')
 
+    <h1>Prooktatás 2012</h1>
 @stop
 
 @section('footer')
