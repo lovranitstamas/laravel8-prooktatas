@@ -35,7 +35,7 @@
     Jelszó újra: <input type="password" name="password_confirmation">
     <br>
 
-    Telefonszám: <input type="text" name="phone"   value="{{old('email')?: $customer->phone}}">
+    Telefonszám: <input type="text" name="phone"   value="{{old('phone')?: $customer->phone}}">
     @if($errors->first('phone'))
         <p style="color:red">
             {{$errors->first('phone')}}

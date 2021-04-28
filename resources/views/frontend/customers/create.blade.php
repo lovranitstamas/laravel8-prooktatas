@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Regisztráció</h1>
+    <h1>Ügyfél regisztráció</h1>
 
     @if(session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
