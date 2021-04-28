@@ -6,6 +6,10 @@
         User oldal
     </a>
 
+    @if($errors->first('email'))
+        <p style="color:red">{{$errors->first('email')}}</p>
+    @endif
+
     <h1>Admin belépés</h1>
     <form action="{{route('admin.login.store')}}" method="POST">
         @csrf
