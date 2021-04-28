@@ -1,5 +1,7 @@
 $(document).ready(function () {
-    $('.del-contact-person-button-sw').click(function () {
+    $('.del-contact-person-button-sw').click(function (e) {
+        e.preventDefault();
+
         let token = $(this).data('token');
         let url = $(this).data('url');
         let customerId = $(this).data('id');
@@ -35,7 +37,9 @@ $(document).ready(function () {
         });
     }
 
-    $('.button-delete-customer').click(function () {
+    $('.button-delete-customer').click(function (e) {
+        e.preventDefault();
+
         let token = $(this).data('token');
         let url = $(this).data('url');
         let customerId = $(this).data('id');
