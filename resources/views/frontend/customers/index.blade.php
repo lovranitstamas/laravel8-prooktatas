@@ -49,12 +49,18 @@
                         <input type="submit" value="Törlés" class="btn btn-danger">
                     </form>
                     |
-
                     <button class="btn btn-danger button-delete-customer d-inline"
                             data-token="{{csrf_token()}}"
                             data-id="{{$customer->id}}"
                             data-url="{{route('customers.destroyWithJson', $customer->id)}}">
                         Törlés (Json)
+                    </button>
+                    |
+                    <button class="btn btn-danger del-contact-person-button-sw d-inline"
+                            data-token="{{csrf_token()}}"
+                            data-id="{{$customer->id}}"
+                            data-url="{{route('customers.destroyWithJson', $customer->id)}}">
+                        Törlés (Sweet)
                     </button>
             </tr>
         @endforeach

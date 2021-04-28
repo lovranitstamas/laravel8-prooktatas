@@ -6,4 +6,5 @@
 
     <title>Pro-oktatás</title>
     <link href="{{url('css/app.css')}}" rel="stylesheet">
+    <link href="{{url('css/sweetalert2.css')}}" rel="stylesheet">
 </head>

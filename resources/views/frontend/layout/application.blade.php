@@ -13,6 +13,7 @@
 </div>
 
 <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/bootstrap-mix.js')}}"></script>
 <script src="{{asset('js/scripts.js')}}"></script>
 
 </body>

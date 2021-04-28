@@ -15,4 +15,17 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps();
 
-mix.js('resources/js/scripts.js', 'public/js')
+mix.scripts([
+    "node_modules/popper.js/dist/umd/popper.js",
+    "node_modules/jquery/dist/jquery.js",
+    "node_modules/bootstrap/dist/js/bootstrap.js",
+], 'public/js/bootstrap-mix.js')
+
+mix.scripts([
+    "node_modules/sweetalert2/dist/sweetalert2.js",
+    "resources/js/scripts.js"
+], 'public/js/scripts.js')
+    .copy('node_modules/sweetalert2/dist/sweetalert2.css', 'public/css');
+
+
+
