@@ -29,8 +29,10 @@ Route::post('/registration', [CustomerController::class, 'store'])->name('custom
 Route::get('/login', [CustomerAuthController::class, 'create'])->name('login.create');
 Route::post('/login/store', [CustomerAuthController::class, 'store'])->name('login.store');
 
-Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/index', [DashboardController::class, 'index'])->name('index');
+Route::middleware('admin_auth')->group(function () {
+    Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/index', [DashboardController::class, 'index'])->name('index');
+    });
 });
 
 Route::namespace('Auth')->prefix('admin')->name('admin.')->group(function () {
