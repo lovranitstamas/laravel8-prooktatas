@@ -38,7 +38,10 @@ Route::middleware('admin_auth')->group(function () {
 Route::namespace('Auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.create');
     Route::post('/login', [LoginController::class, 'login'])->name('login.store');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::middleware('admin_auth')->group(function () {
+        Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    });
 });
 
 Route::middleware('customer_auth')->group(function () {
