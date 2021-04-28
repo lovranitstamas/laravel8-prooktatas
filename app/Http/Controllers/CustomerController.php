@@ -7,13 +7,21 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
-        $customers = Customer::all();
+        //$customers = Customer::all();
+
+        $search = $request->input('search');
+        /*
+        $search['sort_by'] = null;
+        $search['sorting_direction'] = null;
+        */
+
+        $customers = Customer::search($search)->orderBy('name')->get();
 
         return view('frontend.customers.index',
-            compact('customers'));
+            compact(['customers','search']));
     }
 
     public function create()
