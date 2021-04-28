@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,12 +18,18 @@ class Customer extends Authenticatable
         }
 
         if (isset($params['email']) && $params['email']) {
-            $query->where('email', 'LIKE', $params['email']. '%');
+            $query->where('email', 'LIKE', $params['email'] . '%');
         }
 
         if (isset($params['phone']) && $params['phone']) {
-            $query->where('phone', 'LIKE', '%' . $params['phone']. '%');
+            $query->where('phone', 'LIKE', '%' . $params['phone'] . '%');
         }
+    }
+
+    public function scopeFreshRegister($query)
+    {
+        $date = Carbon::now()->subWeek()->format('Y-m-d');
+        $query->where('created_at', '>', $date);
     }
 
     public function lastUpdatedAt()

@@ -25,7 +25,11 @@ mix.scripts([
     "node_modules/sweetalert2/dist/sweetalert2.js",
     "resources/js/scripts.js"
 ], 'public/js/scripts.js')
-    .copy('node_modules/sweetalert2/dist/sweetalert2.css', 'public/css');
+    .copy('node_modules/sweetalert2/dist/sweetalert2.css', 'public/css')
+    .copy(
+        'node_modules/@fortawesome/fontawesome-free/webfonts',
+        'public/webfonts'
+    );
 
 
 
