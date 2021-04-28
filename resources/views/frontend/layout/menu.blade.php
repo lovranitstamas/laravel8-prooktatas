@@ -12,6 +12,9 @@
         </form>
     @else
         <a href="{{route('customer.create')}}">Ügyfél regisztráció</a> |
-        <a href="{{route('login.create')}}">Belépés</a> |
+        <a href="{{route('login.create')}}">Ügyfél belépés</a> |
+    @endif
+    @if(!authCustomer())
+        <a href="{{route('admin.login.create')}}">Admin belépés</a> |
     @endif
 </div>

@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +26,18 @@ Route::get('/', [PageController::class, 'index'])->name('index');
 
 Route::get('/registration', [CustomerController::class, 'create'])->name('customer.create');
 Route::post('/registration', [CustomerController::class, 'store'])->name('customer.store');
-
 Route::get('/login', [CustomerAuthController::class, 'create'])->name('login.create');
 Route::post('/login/store', [CustomerAuthController::class, 'store'])->name('login.store');
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/index', [DashboardController::class, 'index'])->name('index');
+});
+
+Route::namespace('Auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.create');
+    Route::post('/login', [LoginController::class, 'login'])->name('login.store');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+});
 
 Route::middleware('customer_auth')->group(function () {
     Route::delete('/logout', [CustomerAuthController::class, 'destroy'])->name('login.destroy');

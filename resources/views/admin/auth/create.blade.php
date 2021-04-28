@@ -1,9 +1,14 @@
-@extends('frontend.layout.application')
+@extends('admin.layout.admin-layout')
 
 @section('content')
-    <form action="{{route('login.store')}}" method="POST">
+
+    <a class="btn btn-secondary" href="{{route('index')}}">
+        User oldal
+    </a>
+
+    <h1>Admin belépés</h1>
+    <form action="{{route('admin.login.store')}}" method="POST">
         @csrf
-        <h1>Ügyfél belépés</h1>
         <p>
             E-mail <input type="text" name="email" value="{{old('email')}}">
         </p>
