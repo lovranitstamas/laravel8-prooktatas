@@ -13,4 +13,17 @@ class Customer extends Model
     {
         return $this->updated_at->format('Y-m-d');
     }
+
+    public function setAttributes($data)
+    {
+        $this->name = $data['name'];
+        $this->email = $data['email'];
+        if (isset($data['password']) && $data['password']) {
+            $this->password = \Hash::make($data['password']);
+        }
+        if (isset($data['phone']) && $data['phone']) {
+            $this->phone = $data['phone'];
+        }
+
+    }
 }

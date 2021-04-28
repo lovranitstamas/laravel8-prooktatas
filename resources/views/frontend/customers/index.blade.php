@@ -29,8 +29,9 @@
                 </td>
                 <td>{{$customer->lastUpdatedAt()}}</td>
                 <td>{{$customer->created_at}}</td>
-                <td><a href="{{route('customer.show', ['customerId' => $customer->id])}}">Megtekintés</a> | <a
-                        href="">Törlés</a></td>
+                <td><a href="{{route('customer.show', ['customerId' => $customer->id])}}">Megtekintés</a> |
+                    <a href="{{route('customer.edit', ['customerId' => $customer->id])}}">Módosítás</a> |
+                    <a href="">Törlés</a></td>
             </tr>
         @endforeach
         </tbody>

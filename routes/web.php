@@ -25,6 +25,11 @@ Route::get('/customers', [CustomerController::class, 'index'])->name('customer.i
 Route::get('/registration', [CustomerController::class, 'create'])->name('customer.create');
 Route::post('/registration', [CustomerController::class, 'store'])->name('customer.store');
 Route::get('/customer/{customerId}', [CustomerController::class, 'show'])->name('customer.show');
+Route::get('/customers/{customerId}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
+Route::put('/customers/{customerId}/edit', [CustomerController::class, 'update'])->name('customer.update');
+Route::delete('/customer/{customerId}/destroy', [CustomerController::class, 'destroy'])->name('customer.destroy');
+
+
 
 Auth::routes();
 
