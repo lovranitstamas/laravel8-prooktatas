@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +19,12 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::get('/', [CustomerController::class, 'index'])->name('index');
+Route::get('/', [PageController::class, 'index'])->name('index');
 
-Route::get('reg', [CustomerController::class, 'register'])->name('register');
-Route::post('reg', [CustomerController::class, 'registration'])->name('register');
+Route::get('/customers', [CustomerController::class, 'index'])->name('customer.index');
+Route::get('/registration', [CustomerController::class, 'create'])->name('customer.create');
+Route::post('/registration', [CustomerController::class, 'store'])->name('customer.store');
+Route::get('/customer/{customerId}', [CustomerController::class, 'show'])->name('customer.show');
 
 Auth::routes();
 

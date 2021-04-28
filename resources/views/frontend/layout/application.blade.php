@@ -4,8 +4,13 @@
 
 <body>
 @include('frontend.layout.menu')
-@yield('content')
+<div class="container py-5">
+    @yield('content')
+</div>
 
 @yield('footer')
+
+<script src="{{asset('js/app.js')}}"></script>
+
 </body>
 </html>
