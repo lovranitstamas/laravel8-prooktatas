@@ -8,9 +8,12 @@
     @yield('content')
 </div>
 
-@yield('footer')
+<div class="p-2">
+    @yield('footer')
+</div>
 
 <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/scripts.js')}}"></script>
 
 </body>
 </html>

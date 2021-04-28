@@ -28,7 +28,8 @@ Route::get('/customer/{customerId}', [CustomerController::class, 'show'])->name(
 Route::get('/customers/{customerId}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
 Route::put('/customers/{customerId}/edit', [CustomerController::class, 'update'])->name('customer.update');
 Route::delete('/customer/{customerId}/destroy', [CustomerController::class, 'destroy'])->name('customer.destroy');
-
+Route::delete('/customer/{customerId}/destroyWithJson', [CustomerController::class, 'destroyWithJson'])
+    ->name('customers.destroyWithJson');
 
 
 Auth::routes();

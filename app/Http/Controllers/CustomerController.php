@@ -101,6 +101,34 @@ class CustomerController extends Controller
 
         return redirect()->back();
 
+    }
 
+    public function destroy($id)
+    {
+
+        try {
+            $customer = Customer::findOrFail($id);
+            $customer->delete();
+
+            session()->flash('success', 'Ügyfél törölve.');
+        } catch (\Exception $e) {
+            session()->flash('error', $e->getMessage());
+        }
+
+        return redirect()->back();
+    }
+
+    public function destroyWithJson($id)
+    {
+
+
+        try {
+            $customer = Customer::findOrFail($id);
+            $customer->delete();
+
+            return response()->json(['message' => 'Az ügyfél törölve']);
+        } catch (\Exception $e) {
+            return response()->json(['err' => $e->getMessage()]);
+        }
     }
 }

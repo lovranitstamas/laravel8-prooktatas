@@ -2,6 +2,15 @@
 
 @section('content')
 
+    @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{session('success')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
     <table class="table">
         <thead class="thead-dark">
         <tr>
@@ -16,7 +25,7 @@
         </thead>
         <tbody>
         @foreach($customers as $customer)
-            <tr>
+            <tr id="customer-{{$customer->id}}">
                 <th scope="row">{{$customer->id}}</th>
                 <td>{{$customer->name}}</td>
                 <td>{{$customer->email}}</td>
@@ -31,7 +40,22 @@
                 <td>{{$customer->created_at}}</td>
                 <td><a href="{{route('customer.show', ['customerId' => $customer->id])}}">Megtekintés</a> |
                     <a href="{{route('customer.edit', ['customerId' => $customer->id])}}">Módosítás</a> |
-                    <a href="">Törlés</a></td>
+                    <br>
+                    <form method="POST"
+                          action="{{ route('customer.destroy', $customer->id)}}"
+                          class="d-inline">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="submit" value="Törlés" class="btn btn-danger">
+                    </form>
+                    |
+
+                    <button class="btn btn-danger button-delete-customer d-inline"
+                            data-token="{{csrf_token()}}"
+                            data-id="{{$customer->id}}"
+                            data-url="{{route('customers.destroyWithJson', $customer->id)}}">
+                        Törlés (Json)
+                    </button>
             </tr>
         @endforeach
         </tbody>

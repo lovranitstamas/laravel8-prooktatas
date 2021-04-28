@@ -56,5 +56,12 @@
     @endif
 
     <br>
-    <input type="submit" value="{{ $customer->id ? 'Módosítás ' : 'Regisztráció'}}">
+    <input type="submit" value="{{ $customer->id ? 'Módosítás ' : 'Regisztráció'}}"
+           class="btn btn-primary">
+
+    <p class="mt-2">
+        <a class="btn btn-secondary" href="{{route('customer.index')}}">
+            Vissza
+        </a>
+    </p>
 </form>
