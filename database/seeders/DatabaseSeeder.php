@@ -16,22 +16,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+
         $admin = new User();
         $admin->name = 'Lovi tomi';
         $admin->email = 'tamas198601@gmail.com';
         $admin->password = \Hash::make('admin123');
         $admin->save();
 
-        $tag = new Tag();
-        $tag->name = "tag 1";
-        $tag->save();
+        $this->call(TagSeeder::class);
 
-        $tag = new Tag();
-        $tag->name = "tag 1";
-        $tag->save();
-
-        $tag = new Tag();
-        $tag->name = "tag 1";
-        $tag->save();
     }
 }
