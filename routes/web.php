@@ -56,7 +56,15 @@ Route::middleware('customer_auth')->group(function () {
     Route::delete('/customer/{customerId}/destroyWithJson', [CustomerController::class, 'destroyWithJson'])
         ->name('customer.destroyWithJson');
 
+
+
+
+
+    Route::get('/note/{customerId?}', [NoteController::class, 'index'])->name('note.list');
     Route::resource('note', NoteController::class);
+
+
+
 });
 
 

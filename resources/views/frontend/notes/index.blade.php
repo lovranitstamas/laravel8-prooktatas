@@ -14,7 +14,7 @@
 
     <p><a href="{{route('note.create')}}">Jegyzet létrehozása</a> |</p>
 
-    <form action="{{route('note.index')}}" method="GET">
+    <form action="{{route('note.list')}}" method="GET">
         <table class="table">
             <thead class="thead-dark">
             <tr>

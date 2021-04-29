@@ -13,7 +13,7 @@ class Customer extends Authenticatable
 
     public function notes()
     {
-        $this->hasMany(Note::class, 'customer_id','id');
+        return $this->hasMany(Note::class, 'customer_id','id');
     }
 
     public function scopeSearch($query, $params = [])

@@ -19,6 +19,7 @@
                 <th scope="col">Név</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Telefonszám</th>
+                <th scope="col">Jegyzetek</th>
                 <th scope="col">Módosítás</th>
                 <th scope="col">Regisztráció</th>
                 <th scope="col">Műveletek</th>
@@ -56,6 +57,10 @@
                         @else
                             Nincs megadva
                         @endif
+                    </td>
+                    <td><a href="{{route('note.list', $customer->id)}}">
+                            Jegyzetek</a>
+                        ({{$customer->notes->count()}} db)
                     </td>
                     <td>{{$customer->lastUpdatedAt()}}</td>
                     <td>{{$customer->created_at}}</td>

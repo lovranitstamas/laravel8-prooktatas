@@ -20,7 +20,7 @@
            class="btn btn-primary">
 
     <p class="mt-2">
-        <a class="btn btn-secondary" href="{{route('note.index')}}">
+        <a class="btn btn-secondary" href="{{route('note.list')}}">
             Vissza
         </a>
     </p>

@@ -4,7 +4,7 @@
         <a href="{{route('customer.index')}}">Ügyféllista</a> |
     @endif
     @if(authCustomer())
-        <a href="{{route('note.index')}}">Publikált jegyzetek</a> |
+        <a href="{{route('note.list')}}">Publikált jegyzetek</a> |
         Belépve: {{authCustomer()->name }}
         <form action="{{route('login.destroy')}}" method="POST">
             <input type="hidden" name="_method" value="DELETE">
