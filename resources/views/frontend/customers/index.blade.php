@@ -11,6 +11,7 @@
         </div>
     @endif
 
+    <h1>Ügyféllista</h1>
     <form action="{{route('customer.index')}}" method="GET">
         <table class="table">
             <thead class="thead-dark">

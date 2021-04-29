@@ -12,6 +12,7 @@
     @endif
 
 
+    <h1>Jegyzetlista</h1>
     <p><a href="{{route('note.create')}}">Jegyzet létrehozása</a> |</p>
 
     <form action="{{route('note.list')}}" method="GET">
