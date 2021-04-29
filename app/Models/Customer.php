@@ -11,6 +11,11 @@ class Customer extends Authenticatable
 {
     use HasFactory;
 
+    public function notes()
+    {
+        $this->hasMany(Note::class, 'customer_id','id');
+    }
+
     public function scopeSearch($query, $params = [])
     {
         if (isset($params['name']) && $params['name']) {
