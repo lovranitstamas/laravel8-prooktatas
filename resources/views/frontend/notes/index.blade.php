@@ -21,6 +21,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Ügyfél</th>
+                <th scope="col">E-mail</th>
                 <th scope="col">Tartalom</th>
                 <th scope="col">Módosítás</th>
                 <th scope="col">Regisztráció</th>
@@ -32,6 +33,7 @@
                 <tr id="note-{{$note->id}}">
                     <th scope="row">{{$note->id}}</th>
                     <td>{{$note->customer->name}}</td>
+                    <td>{{$note->customer->email}}</td>
                     <td>{{$note->content}}</td>
                     <td>{{$note->updated_at}}</td>
                     <td>{{$note->created_at}}</td>
