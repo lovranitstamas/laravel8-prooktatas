@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -20,5 +21,17 @@ class DatabaseSeeder extends Seeder
         $admin->email = 'tamas198601@gmail.com';
         $admin->password = \Hash::make('admin123');
         $admin->save();
+
+        $tag = new Tag();
+        $tag->name = "tag 1";
+        $tag->save();
+
+        $tag = new Tag();
+        $tag->name = "tag 1";
+        $tag->save();
+
+        $tag = new Tag();
+        $tag->name = "tag 1";
+        $tag->save();
     }
 }
