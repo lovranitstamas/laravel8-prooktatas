@@ -38,8 +38,8 @@
                     <td>{{$note->updated_at}}</td>
                     <td>{{$note->created_at}}</td>
                     <td>
-                        {{--<a href="{{route('note.show', ['noteId' => $note->id])}}">Megtekintés</a> |
-                        <a href="{{route('note.edit', ['noteId' => $note->id])}}">Módosítás</a> |--}}
+                        {{--<a href="{{route('note.show', ['noteId' => $note->id])}}">Megtekintés</a> |--}}
+                        <a href="{{route('note.edit', ['note' => $note->id])}}">Módosítás</a> |
                         {{--<button class="btn btn-danger del-note-button-sw d-inline"
                                 data-token="{{csrf_token()}}"
                                 data-id="{{$note->id}}"

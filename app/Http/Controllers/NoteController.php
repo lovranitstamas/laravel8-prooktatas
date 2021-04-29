@@ -38,7 +38,7 @@ class NoteController extends Controller
     {
 
         $rules = [
-            'content' => 'required'
+            'content' => 'required|min:4'
         ];
 
         $this->validate($request, $rules);
@@ -67,7 +67,12 @@ class NoteController extends Controller
 
     public function edit($id)
     {
+        $note = Note::findOrFail($id);
+        $tags = Tag::orderBy('name')->get();
 
+        return view('frontend.notes.edit')
+            ->with('note', $note)
+            ->with('tags', $tags);
     }
 
     public function update(Request $request, $id)
