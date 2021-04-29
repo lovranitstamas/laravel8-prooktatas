@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
@@ -47,13 +48,15 @@ Route::namespace('Auth')->prefix('admin')->name('admin.')->group(function () {
 Route::middleware('customer_auth')->group(function () {
     Route::delete('/logout', [CustomerAuthController::class, 'destroy'])->name('login.destroy');
 
-    Route::get('/customers', [CustomerController::class, 'index'])->name('customer.index');
+    Route::get('/customer', [CustomerController::class, 'index'])->name('customer.index');
     Route::get('/customer/{customerId}', [CustomerController::class, 'show'])->name('customer.show');
-    Route::get('/customers/{customerId}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
-    Route::put('/customers/{customerId}/edit', [CustomerController::class, 'update'])->name('customer.update');
+    Route::get('/customer/{customerId}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
+    Route::put('/customer/{customerId}/edit', [CustomerController::class, 'update'])->name('customer.update');
     Route::delete('/customer/{customerId}/destroy', [CustomerController::class, 'destroy'])->name('customer.destroy');
     Route::delete('/customer/{customerId}/destroyWithJson', [CustomerController::class, 'destroyWithJson'])
-        ->name('customers.destroyWithJson');
+        ->name('customer.destroyWithJson');
+
+    Route::resource('note', NoteController::class);
 });
 
 
