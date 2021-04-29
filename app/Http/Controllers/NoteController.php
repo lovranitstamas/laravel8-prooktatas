@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\Note;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
@@ -25,18 +26,30 @@ class NoteController extends Controller
 
     public function create()
     {
+
+        $tags = Tag::orderBy('name')->get();
+
         $note = new Note;
-        return view('frontend.notes.create', compact('note'));
+        return view('frontend.notes.create',
+            compact(['note', 'tags']));
     }
 
     public function store(Request $request)
     {
+
+        $rules = [
+            'content' => 'required'
+        ];
+
+        $this->validate($request, $rules);
 
         try {
             $note = new Note;
             $note->content = $request->input('content');
             $note->customer_id = auth()->guard('customer')->id();
             $note->save();
+
+            $note->tags()->attach($request->input('tags'));
 
             session()->flash('success', 'Köszönjük a bejegyzést.');
         } catch (\Exception $e) {

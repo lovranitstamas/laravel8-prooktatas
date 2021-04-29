@@ -16,6 +16,15 @@
     @endif
 
     <br>
+    Címkék:
+    <br><br>
+    <select name="tags[]" multiple style="width: 300px">
+        @foreach($tags as $tag)
+            <option value="{{$tag->id}}">{{$tag->name}}</option>
+        @endforeach
+    </select>
+
+    <br><br>
     <input type="submit" value="{{ $note->id ? 'Módosítás ' : 'Mentés'}}"
            class="btn btn-primary">
 
