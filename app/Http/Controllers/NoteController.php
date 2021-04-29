@@ -78,6 +78,25 @@ class NoteController extends Controller
     public function update(Request $request, $id)
     {
 
+        $rules = [
+            'content' => 'required|min:4'
+        ];
+
+        $this->validate($request, $rules);
+
+        try {
+            $note = Note::findOrFail($id);
+            $note->content = $request->input('content');
+            $note->save();
+
+            $note->tags()->sync($request->input('tags'));
+
+            session()->flash('success', 'Bejegyzés módosítva.');
+        } catch (\Exception $e) {
+            session()->flash('error', $e->getMessage());
+        }
+
+        return redirect()->back();
     }
 
     public function destroy($id)
