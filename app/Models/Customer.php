@@ -29,6 +29,15 @@ class Customer extends Authenticatable
         if (isset($params['phone']) && $params['phone']) {
             $query->where('phone', 'LIKE', '%' . $params['phone'] . '%');
         }
+
+        if (isset($params['sort_by']) && $params['sort_by']) {
+            $query->orderBy($params['sort_by'], $params['sorting_direction']);
+        }
+
+        if (!isset($params['sort_by'])) {
+            $query->orderBy('name', 'asc');
+        }
+
     }
 
     public function scopeFreshRegister($query)

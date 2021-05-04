@@ -17,7 +17,7 @@
             <thead class="thead-dark">
             <tr>
                 {{--<th scope="col">#</th>--}}
-                <th scope="col">Név</th>
+                <th scope="col">{!! orderTableHeader('name','Név')!!}</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Telefonszám</th>
                 <th scope="col">Jegyzetek</th>

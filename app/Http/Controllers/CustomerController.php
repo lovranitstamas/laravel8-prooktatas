@@ -13,12 +13,13 @@ class CustomerController extends Controller
         //$customers = Customer::all();
 
         $search = $request->input('search');
-        /*
-        $search['sort_by'] = null;
-        $search['sorting_direction'] = null;
-        */
 
-        $customers = Customer::search($search)->orderBy('name')->get();
+        $search['sort_by'] = $request->input('sort_by');
+        $search['sorting_direction'] = $request->input('sorting_direction');
+
+
+        //$customers = Customer::search($search)->orderBy('name')->get();
+        $customers = Customer::search($search)->get();
 
         return view('frontend.customers.index',
             compact(['customers','search']));
